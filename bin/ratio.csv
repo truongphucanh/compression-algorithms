@@ -1,0 +1,17 @@
+Algorithm,Original document,Compression ratio
+Runlength, ../data/text/0.txt,0.5126732
+Runlength, ../data/text/1.txt,0.509433962
+Runlength, ../data/text/2.txt,0.718927087
+Runlength, ../data/text/3.txt,0.516328635
+Runlength, ../data/text/4.txt,0.510793424
+Runlength, ../data/text/5.txt,0.512784454
+Runlength, ../data/text/6.txt,0.511470745
+Runlength, ../data/text/7.txt,0.510928144
+Runlength, ../data/text/8.txt,0.531274494
+Runlength, ../data/text/9.txt,0.640720877
+Runlength, ../data/text/10.txt,0.510598572
+Runlength, ../data/text/11.txt,0.517941051
+Runlength, ../data/text/12.txt,0.510451045
+Runlength, ../data/text/13.txt,0.513080991
+Runlength, ../data/text/14.txt,0.516245604
+Runlength, ../data/text/15.txt,6.866666667
