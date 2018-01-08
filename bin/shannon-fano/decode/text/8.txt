@@ -1,0 +1,144 @@
+The Lempel-Ziv-Welch (LZW) algorithm employs an adaptive, dictionary-based
+compression technique. Unlike variable-length coding, in which the lengths of the
+codewords are different, LZW uses fixed-length codewords to represent variable-
+length strings of symbols/characters that commonly occur together, such as words
+in English text.
+As in the other adaptive compression techniques, the LZW encoder and decoder
+builds up the same dictionary dynamically while receiving the data—the encoder and
+the decoder both develop the same dictionary. Since a single code can now represent
+more than one symbol/character, data compression is realized.
+Algorithm 7.2
+(LZW Compression).
+BEGIN
+s = next input character;
+while not EOF
+{
+c = next input character;
+if s + c exists in the dictionary
+s = s + c;
+else
+{
+output the code for s;
+add string s + c to the dictionary with a new code;
+s = c;
+}
+}
+output the code for s;
+END7.5 Dictionary-Based Coding
+201
+LZW proceeds by placing longer and longer repeated entries into a dictionary,
+then emitting the code for an element rather than the string itself, if the element has
+already been placed in the dictionary. The predecessors of LZW are LZ77 [9] and
+LZ78 [10], due to Jacob Ziv and Abraham Lempel in 1977 and 1978. Welch [11]
+improved the technique in 1984. LZW is used in many applications, such as UNIX
+compress, GIF for images, WinZip, and others.
+Example 7.2 (LZW Compression for String ABABBABCABABBA).
+Let us start with a very simple dictionary (also referred to as a string table), initially
+containing only three characters, with codes as follows:
+code
+string
+---------------
+1
+A
+2
+B
+3
+C
+Now if the input string is ABABBABCABABBA, the LZW compression algo-
+rithm works as follows:
+s
+c
+output
+code string
+---------------------------------
+1
+A
+2
+B
+3
+C
+---------------------------------
+A
+B
+1
+4
+AB
+B
+A
+2
+5
+BA
+A
+B
+AB
+B
+4
+6
+ABB
+B
+A
+BA
+B
+5
+7
+BAB
+B
+C
+2
+8
+BC
+C
+A
+3
+9
+CA
+A
+B
+AB
+A
+4
+10
+ABA
+A
+B
+AB
+B
+ABB
+A
+6
+11
+ABBA
+A
+EOF
+1
+The output codes are 1 2 4 5 2 3 4 6 1. Instead of 14 characters, only 9 codes need
+to be sent. If we assume each character or code is transmitted as a byte, that is quite
+a saving (the compression ratio would be 14/9 = 1.56). (Remember, the LZW is an
+adaptive algorithm, in which the encoder and decoder independently build their own
+string tables. Hence, there is no overhead involving transmitting the string table.)
+Obviously, for our illustration the above example is replete with a great deal of
+redundancy in the input string, which is why it achieves compression so quickly. In
+general, savings for LZW would not come until the text is more than a few hundred
+bytes long.202
+7 Lossless Compression Algorithms
+The above LZW algorithm is simple, and it makes no effort in selecting optimal
+new strings to enter into its dictionary. As a result, its string table grows rapidly,
+as illustrated above. A typical LZW implementation for textual data uses a 12-bit
+codelength. Hence, its dictionary can contain up to 4,096 entries, with the first 256
+(0–255) entries being ASCII codes. If we take this into account, the above compres-
+sion ratio is reduced to (14 × 8)/(9 × 12) = 1.04.
+Algorithm 7.3
+(LZW Decompression (Simple Version)).
+BEGIN
+s = NIL;
+while not EOF
+{
+k = next input code;
+entry = dictionary entry for k;
+output entry;
+if (s != NIL)
+add string s + entry[0] to dictionary
+with a new code;
+s = entry;
+}
+END

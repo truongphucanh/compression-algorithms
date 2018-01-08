@@ -1,0 +1,63 @@
+What Is an MP3 File?
+How to open, edit, & convert MP3 files
+Share
+Pin
+Email
+PRINT 
+Screenshot of several MP3 files in Windows 10
+ MP3 Files.
+Windows How-Tos
+Windows
+Key Concepts
+File Types
+Computer Concepts
+Command Line
+Basics
+Guides & Tutorials
+Installing & Upgrading
+Tips & Tricks
+by Tim Fisher
+Updated December 29, 2017
+A file with the MP3 file extension is an MP3 Audio file developed by the Moving Pictures Experts Group (MPEG). The abbreviation stands for MPEG-1 or MPEG-2 Audio Layer III.
+
+An MP3 file is normally used to store music data, but there are lots of free audio books that come in the MP3 format too. Due to its popularity, a variety of phones, tablets, and even vehicles provide native support for playing MP3s.
+
+What makes MP3 files different than some other audio file formats is that their audio data is compressed to reduce the file size down to just a fraction of what formats like WAV use. This technically means the sound quality is reduced in order to achieve such a small size, but the tradeoff is typically acceptable, which is why the format is so widely used.
+
+How to Open an MP3 File
+MP3 files can be played with lots of different computer software, including Microsoft Windows Music, Windows Media Player, VLC, iTunes, Winamp, and most other music players.
+
+Apple devices like the iPhone, iPad, and iPod touch can play MP3 files without a special app, like from right within the web browser or Mail app. The same is true for the Amazon Kindle, Microsoft Zune, Android tablets and phones, and lots of other devices.
+
+Note: If you're trying to find out how to add MP3s (or other supported audio formats) to iTunes so that you can sync them with your iOS device, Apple has a short tutorial on importing music that's already on your computer, that's as easy as dragging the file into iTunes or using the File menu.
+
+Tip: Do you need to cut, or shorten an MP3 file instead? Skip down to the section called "How to Edit an MP3 File" for ways you can do that.
+
+If you find that an application on your PC does try to open the MP3 file but it's the wrong application or if you would rather have another installed program open MP3 files, see our How to Change the Default Program for a Specific File Extension guide for making that change in Windows.
+
+How to Convert an MP3 File
+There are lots of ways to save MP3s to other audio formats. The Freemake Audio Converter program is one example of how you can convert MP3 to WAV. Plenty of other MP3 converters can be downloaded through our list of free audio converter software programs.
+
+Most of the programs seen in that list can also convert MP3 to M4R for an iPhone ringtone, but also to M4A, MP4 (for making a "video" with just sound), WMA, OGG, FLAC, AAC, AIF/AIFF/AIFC, and many others.
+
+If you're looking for an online MP3 converter that's easy to use, I recommend Zamzar or FileZigZag. All you have to do to use those MP3 converters is upload your MP3 file to the website and then choose the format you want to convert it to. You'll then have to download the converted file to your computer in order to use it.
+
+The Bear File Converter is an online converter that lets you save your MP3 file to the MIDI format as an .MID file. You can upload not only MP3s but also WAV, WMA, AAC, and OGG files. You can upload the file from your computer or enter the URL to where it's located online.
+
+Though this technically isn't considered "converting," you can upload an MP3 file directly to YouTube with web services like TunesToTube and TOVID.IO.
+
+They're meant for musicians who want to advertise their original music and don't necessarily need a video to accompany it.
+
+How to Edit an MP3 File
+Most programs that can open MP3 files can only play them, not edit them. If you need to edit an MP3 file, like to trim down the beginning and/or end, try MP3Cut.net's Online MP3 Cutter. It can also add a fade in or fade out effect.
+
+Another website that can quickly trim an MP3 file to make it not only smaller in size but also shorter in length, is MP3 Cutter.
+
+Audacity is a popular audio editor that has lots of features, so it's not as easy to use as these two I just mentioned.
+
+However, it's great if you need to edit out the middle of the MP3 file or do advanced things like add effects and mix multiple audio files.
+
+Editing MP3 metadata in batches is possible with tag editing software like Mp3tag.
+
+More Help With MP3 Files
+See Get More Help for information about contacting me on social networks or via email, posting on tech support forums, and more. Let me know what kinds of problems you're having with opening or using the MP3 file and I'll see what I can do to help.

@@ -1,0 +1,44 @@
+The emergence of multimedia technologies has made digital libraries a reality.
+Nowadays, libraries, museums, film studios, and governments are converting more
+and more data and archives into digital form. Some of the data (e.g., precious books
+and paintings) indeed need to be stored without any loss.
+As a start, suppose we want to encode the call numbers of the 120 million or so
+items in the Library of Congress (a mere 20 million, if we consider just books). Why
+don’t we just transmit each item as a 27-bit number, giving each item a unique binary
+code (since 2 27 > 120, 000, 000)?
+The main problem is that this “great idea” requires too many bits. And in fact
+there exist many coding techniques that will effectively reduce the total number of
+bits needed to represent the above information. The process involved is generally
+referred to as compression [1, 2].
+In Chap. 6, we had a beginning look at compression schemes aimed at audio.
+There, we had to first consider the complexity of transforming analog signals to
+digital ones, whereas here, we shall consider that we at least start with digital signals.
+For example, even though we know an image is captured using analog signals, the file
+produced by a digital camera is indeed digital. The more general problem of coding
+(compressing) a set of any symbols, not just byte values, say, has been studied for a
+long time.
+Getting back to our Library of Congress problem, it is well known that certain parts
+of call numbers appear more frequently than others, so it would be more economic to
+assign fewer bits as their codes. This is known as variable-length coding (VLC)—the
+more frequently appearing symbols are coded with fewer bits per symbol, and vice
+versa. As a result, fewer bits are usually needed to represent the whole collection.
+In this chapter we study the basics of information theory and several popular loss-
+less compression techniques. Figure 7.1 depicts a general data compression scheme,
+in which compression is performed by an encoder and decompression is performed
+by a decoder.
+We call the output of the encoder codes or codewords. The intermediate medium
+could either be data storage or a communication/computer network. If the com-
+pression and decompression processes induce no information loss, the compression
+scheme is lossless; otherwise, it is lossy. The next several chapters deal with lossy
+compression algorithms as they are commonly used for image, video, and audio
+compression. Here, we concentrate on lossless compression.
+If the total number of bits required to represent the data before compression is B 0
+and the total number of bits required to represent the data after compression is B 1 ,
+then we define the compression ratio as
+compression ratio =
+B 0
+.
+B 1
+In general, we would desire any codec (encoder/decoder scheme) to have a com-
+pression ratio much larger than 1.0. The higher the compression ratio, the better the
+lossless compression scheme, as long as it is computationally feasible.
