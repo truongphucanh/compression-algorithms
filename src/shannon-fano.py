@@ -1,6 +1,48 @@
 """Shannon-Fano coding."""
 
 import collections
+import pickle
+
+def encode_file(in_file, out_file, code_list_file, ratio_file=None):
+    """Shannon-Fano encoding with text file.
+
+    Parameters
+    ----------
+    in_file: Input file (.txt).
+    out_file: Output file (.txt).
+    code_list_file: File stores code_list (.pkl).
+    ratio_file: Compression ratio file (.csv).
+    """
+    with open(in_file, 'r') as file_reader:
+        doc = file_reader.read()
+    encoded_doc, code_list = encode(doc)
+    with open(out_file, 'w') as file_writter:
+        file_writter.write(encoded_doc)
+    with open(code_list_file, 'wb') as file_writter:
+        pickle.dump(code_list, file_writter)
+    if ratio_file != None:
+        ratio = len(doc) * 8.0 / len (encoded_doc)
+        with open(ratio_file, 'a') as file_writter:
+            file_writter.write('{},{},{},{}\n'.format(in_file, len(doc), len(encoded_doc), ratio))
+    return 0
+
+def decode_file(in_file, out_file, code_list_file):
+    """Shannon-Fano decoding with text file.
+
+    Parameters
+    ----------
+    in_file: Input file (.txt).
+    out_file: Output file (.txt).
+    code_list_file: File stores code_list (.pkl).
+    """
+    with open(code_list_file, 'rb') as file_reader:
+        code_list = pickle.load(file_reader)
+    with open(in_file, 'r') as file_reader:
+        encoded_doc = file_reader.read()
+    decoded_doc = decode(encoded_doc, code_list)
+    with open(out_file, 'w') as file_writter:
+        file_writter.write(decoded_doc)
+    return 0
 
 def decode(encoded_doc, code_list):
     """Shannon-Fano decoding.
@@ -201,9 +243,38 @@ def test():
     else:
         print 'Decode fail.'
 
+def validate(file_1, file_2):
+    """Compare two text files
+
+    Returns
+    -------
+    Whether they are the same or not.
+    """
+
+    with open(file_1, 'r') as file_reader:
+        doc_1 = file_reader.read()
+
+    with open(file_2, 'r') as file_reader:
+        doc_2 = file_reader.read()
+
+    return doc_1 == doc_2
+
+def run_on_data():
+    N_FILES = 16
+    for i in range(0, N_FILES):
+        original_file = '../data/text/{}.txt'.format(str(i))
+        encoded_file = '../bin/shannon-fano/encode/text/{}.txt'.format(i)
+        code_list_file = '../bin/shannon-fano/encode/text/{}.pkl'.format(i)
+        decoded_file = '../bin/shannon-fano/decode/text/{}.txt'.format(i)
+        encode_file(original_file, encoded_file, code_list_file, ratio_file='../bin/shannon-fano/ratio.csv')
+        decode_file(encoded_file, decoded_file, code_list_file)
+        print 'i = {}: {}'.format(i, validate(original_file, decoded_file))
+
 def main():
     """Main."""
-    test()
+    #test()
+    run_on_data()
+    print 'Done.'
    
 if __name__ == '__main__':
     main()
