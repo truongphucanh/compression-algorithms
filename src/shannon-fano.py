@@ -46,7 +46,7 @@ def encode(doc):
 	# 3. Build the encoded table
     code_list = divide_and_assign_code(frequency, 0, len(frequency) - 1, code='')
 
-	# 4. Apply the encoded table to encode the document
+    # 4. Apply the encoded table to encode the document
     encoded_doc = ''	
     for c in doc:
         encoded_doc = encoded_doc + code_of(c, code_list)
@@ -115,8 +115,6 @@ def find_mid(frequency, low, high):
     for i in range(low + 1, high):
         sum_left = sum(frequency, low, i)
         sum_right = sum(frequency, i + 1, high)
-        print 'left: {}'.format(sum_left)
-        print 'right: {}'.format(sum_right)
         curr_delta = abs(sum_left - sum_right)
         if curr_delta >= last_delta:
             mid = i - 1
@@ -190,24 +188,22 @@ def has_code(code_to_find, code_list):
             return True
     return False
 
+def test():
+    """Testing with a simple document"""
+    doc = 'ABBACAABCECAABADDDE'
+    encoded_doc, code_list = encode(doc)
+    decoded_doc = decode(encoded_doc, code_list)
+    print 'Original doc: {}'.format(doc)
+    print 'Encoded doc: {}'.format(encoded_doc)
+    print 'Decoded doc: {}'.format(decoded_doc)
+    if decoded_doc == doc:
+        print 'Decode success.'
+    else:
+        print 'Decode fail.'
+
 def main():
     """Main."""
-    doc = 'ABBACAABCECAABADDDE'
-    frequency = count_symbols(doc)
-    print frequency
-    frequency = sorted(frequency, key=lambda pair: pair[1], reverse=True)
-    print frequency
-    code_list = divide_and_assign_code(frequency, 0, len(frequency) - 1, code='')
-    print code_list
-    print code_of('E', code_list)
-    encoded_doc, code_list = encode(doc)
-    print encoded_doc
-    print '0001010010000001101111000000100110110110111'
-    print code_list
-    decoded_doc = decode(encoded_doc, code_list)
-    print decoded_doc
-    print doc
-    if decoded_doc == doc:
-        print 'Decode success'
+    test()
+   
 if __name__ == '__main__':
     main()
