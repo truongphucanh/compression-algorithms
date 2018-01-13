@@ -1,8 +1,20 @@
-\subsection{Run-length coding}
-\paragraph*{Basic idea}
-\paragraph*{Examples}
-\paragraph*{Pseudo-code}
-
+\subsection{Run-length coding (RLC)}
+\subsubsection*{Input}
+The document need to compress.
+\subsection*{Output}
+The compressed document.
+\subsubsection*{Basic idea}
+Run-length encoding simple replaces sequences of the same data values within a file by a count number and a single value.
+\subsubsection*{Example}
+\paragraph*{}
+Suppose the following string of data (17 bytes) has to be compressed: ABBBBBBBBBCDEEEEF
+\paragraph*{}
+Using RLE compression, the compressed file takes up 12 bytes and could look like this: 1A 8B 1C 1D 4E 1F
+\paragraph*{}
+And for decompression, all we need is "write down" exactly "count number" times for each symbol. Finally, the result would be the same:\\
+ABBBBBBBBBCDEEEEF
+\subsubsection*{Pseudo-code}
+You can find pseudo-code (Python style) for Run-length encoding and decoding in \textit{pseudo-code/run-length.py}
 \subsection{Shannon-Fano coding}
 \subsubsection*{Input}
 Set of symbol S.\\
@@ -18,7 +30,6 @@ The table of frequency (or number of times symbol appears in the document).
 \item The left part of the list is started with the code 0, and the right part is started with code 1. 
 \item Recursively apply the steps 3 and 4 to each of the two halves, subdividing groups and adding bits to the codes until each symbol has become a corresponding code leaf on the tree.
 \end{enumerate}
-
 \pagebreak
 \subsubsection*{Example}
 The document need to compress: "ABBACAABCECAABADDDE".\\
@@ -65,7 +76,54 @@ Decoded message: "ABBACAABCECAABADDDE".
 \end{table}
 \subsubsection*{Pseudo-code}
 You can find pseudo-code (Python style) for Shannon-Fano encoding and decoding in \textit{pseudo-code/shannon-fano.py}
+
 \subsection{Lossless jpeg}
-\paragraph*{Basic idea}
-\paragraph*{Examples}
-\paragraph*{Pseudo-code}
+\subsubsection*{Input}
+The input of jpeg usually is an image need to compress.
+\subsubsection*{Output}
+The compressed "image"
+\subsubsection*{Basic idea}
+For Compression:
+\begin{enumerate}
+\item Choose a predictor $P$.
+\item Apply the predictor $P$ on the input image $I$ to get $I_p$ (the first pixel [0, 0] mustn't change).
+\item Calculate the different image $I_d = I - I_p$.
+\item Run a lossless compression algorithm on $I_d$ and get the compressed image.
+\end{enumerate}
+For decompression:
+\begin{enumerate}
+\item Run the lossless decompression (same with the 4th step above) we get $I_d$
+\item Apply the predictor $P$ fro each pixel $p_i$ from the first pixel [0, 0] of $I_d$
+\item Then sum up the value from step 2 with the value of $p_i$ in $I_d$ and we will pixel value of the original image.
+\end{enumerate}
+\subsubsection*{Examples}
+Suppose we have a gray-scale image (4x4) $I$ like this:
+\begin{equation*}
+\begin{matrix}
+90 & 92 & 89 & 70\\
+75 & 65 & 67 & 69\\
+90 & 92 & 89 & 70\\
+90 & 92 & 89 & 70\\
+\end{matrix}
+\end{equation*}
+Now, we apply the predictor $X = A + B - C$ to compute $I_p$:
+\begin{equation*}
+\begin{matrix}
+90 & 90 & 92 & 89\\
+90 & 77 & 62 & 48\\
+75 & 65 & 82 & 83\\
+75 & 75 & 89 & 93\\
+\end{matrix}
+\end{equation*}
+Then, we have the different image $I_d$:
+\begin{equation*}
+\begin{matrix}
+90 & 2 & -3 & -19\\
+-15 & -12 & 5 & 21\\
+0 & 15 & -1 & 4\\
+-5 & 10 & 1 & -13\\
+\end{matrix}
+\end{equation*}
+Finally, we can choose another lossless compressor to compress $I_d$.
+\subsubsection*{Pseudo-code}
+You can find pseudo-code (Python style) for Lossless jpeg encoding and decoding in \textit{pseudo-code/lossless-jpeg.py}
