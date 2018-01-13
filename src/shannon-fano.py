@@ -23,7 +23,7 @@ def encode_file(in_file, out_file, code_list_file, ratio_file=None):
     if ratio_file != None:
         ratio = len(doc) * 8.0 / len (encoded_doc)
         with open(ratio_file, 'a') as file_writter:
-            file_writter.write('{},{},{},{}\n'.format(in_file, len(doc), len(encoded_doc), ratio))
+            file_writter.write('{},{},{},{}\n'.format(in_file, len(doc) * 8, len(encoded_doc), ratio))
     return 0
 
 def decode_file(in_file, out_file, code_list_file):

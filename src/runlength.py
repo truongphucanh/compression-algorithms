@@ -67,7 +67,7 @@ def encode_file(in_file, out_file, ratio_file=None):
         encoded_str = ''.join(str(run_length) + str(symbol) for run_length, symbol in encoded_list)
         ratio = len(document) * 1.0 / len(encoded_str)
         with open(ratio_file, 'a') as file_writer:
-            file_writer.write('{},{},{},{}\n'.format(in_file, len(document), len(encoded_str), ratio))
+            file_writer.write('{},{},{},{}\n'.format(in_file, len(document) * 8, len(encoded_str) * 8, ratio))
 
 def decode_file(in_file, out_file):
     """ Encode a document file.

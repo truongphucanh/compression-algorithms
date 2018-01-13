@@ -1,4 +1,4 @@
-input file,before encode,after encode,ratio
+input file,bits before encode,bits after encode,ratio
 ../data/text/0.txt,12136,8742,1.3882406772
 ../data/text/1.txt,20952,14089,1.4871176095
 ../data/text/2.txt,15224,9791,1.5548973547
