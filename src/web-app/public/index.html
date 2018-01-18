@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link href="css/semantic.min.css" rel="stylesheet"/>
+    <link href="css/table.css" rel="stylesheet"/>
+    <link href="css/lightslider.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" type="image/png" href="ui/panorama.png"/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/twentytwenty.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>  
+    <script type="text/javascript" src="js/controller.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/semantic.min.js"></script>
+    <script type="text/javascript" src="js/notify.min.js"></script>
+    <script type="text/javascript" src="js/jquery.event.move.js" ></script>
+    <script type="text/javascript" src="js/jquery.twentytwenty.js" ></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/lightslider.js"></script>  
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Compression</title>
+
+
+  </head>
+
+  <body ng-app="starter" ng-controller="myCtrl">
+
+    <!--HEADER-->
+    <div class="ui teal inverted menu">
+      <div class="ui container">
+        <!-- <a id="segmentationTab" class="active item" ng-click="chooseTitle('segmentation')">
+             Image Segmentation
+             </a> -->
+        <a id="imagesearchTab" class="item" ng-click="chooseTitle('imagesearch')">
+          Multimedia Compression
+        </a>
+        <a id="intro" class="item">
+          Introduction
+        </a>
+
+        <a href="http://techhub.me" class="disabled right item">
+          <div class="ui small teal label">
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+    <div class="ui hidden divider"></div>
+    <!--BODY-->
+    <div class="ui container">       
+
+      <intro>
+      </intro>
+
+      <renderimagesearch>
+        <script type="text/javascript" src="js/imagesearch.js"></script>
+      </renderimagesearch>
+
+      <!-- <div ng-switch on="title">
+           <div ng-switch-when="segmentation">
+           <rendersegmentation>
+           <script type="text/javascript" src="js/segmentation.js"></script>
+           </rendersegmentation>
+           </div>
+           <div ng-switch-when="imagesearch">
+           <renderimagesearch>
+           <script type="text/javascript" src="js/imagesearch.js"></script>
+           </renderimagesearch>
+           </div>
+           </div> -->
+
+
+    </div>
+  </body>
+
+</html>

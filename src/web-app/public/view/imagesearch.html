@@ -1,0 +1,100 @@
+
+
+<div class="ui stackable grid">
+  <div class="row">
+    <div class="five wide column">
+      <div class="ui attached message">
+        <div class="header">
+          Compression Algorithm
+        </div>
+      </div>
+      <form class="ui form attached fluid segment">
+        <div class="field">
+          <div class="ui stackable grid">                  
+            <div class="row">
+              <div class="eight wide column">
+                <label>Status</label>
+              </div>
+              <div class="eight wide column">
+                <a id="status"
+                   data-tooltip="{{statusResult.hideMsg}}"
+                   data-position="right center"
+                   class="ui blue label">
+                  {{statusResult.showMsg}}
+                </a>
+              </div>
+            </div>                                          
+
+            <div class="row">
+              <div class="eight wide column">
+                <label>Algorithm:</label>
+              </div>
+              <div class="eight wide column">
+                <select id="algorithm"
+                        data-position="right center">
+                  <option value="runlength">Run-length</option>
+                  <option value="shannon">Shannon Fano</option>
+                  <option value="jpeg">Jpeg Lossless</option>                  
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="eight wide column">
+                <label>Operation:</label>
+              </div>
+              <div class="eight wide column">
+                <select id="operation"
+                        data-position="right center">
+                  <option value="encode">Encode</option>
+                  <option value="decode">Decode</option>
+                </select>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+      </form>
+
+      <div class="ui hidden divider"></div>
+
+    </div>
+    <div class="eleven wide column">
+      <div class="ui labeled large fluid input">
+        <div class="ui purple label">
+          Add files
+        </div>
+
+        <form id="uploadForm"
+              enctype="multipart/form-data"
+              onsubmit="return validateImageSearchForm()"
+              target="hiddenFrame"
+              method="post">
+          <input id="listFile" onchange="onFileSelected(event)" class="listFileWidth" type="file" name="userPhoto" multiple />
+          <button data-tooltip="Execute"
+                  data-position="right center"
+                  class="ui orange circular large icon button"
+                  type="submit"
+                  value="Submit"
+                  name="submit">
+            <i class="icon chevron right"></i>
+          </button>
+        </form>
+
+        <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+
+
+      </div>
+
+      <div id="mainFrameImage" class="ui hidden divider">
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+</div>
